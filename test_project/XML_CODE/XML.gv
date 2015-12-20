@@ -1,0 +1,103 @@
+digraph graphname {  
+
+    size ="22 22";
+    node0 [label="start" shape="record"];
+    node1 [label="0"];
+    node2 [label="1"];
+    node3 [label="2"];
+    node4 [label="3"];
+    node5 [label="4"];
+    node6 [label="5"];
+    node7 [label="6"];
+    node8 [label="7"];
+    node9 [label="Output(XML Head <?xxx?>)"];
+    node10 [label="Output(End Tag </xxx>)"];
+    node11 [label="Output(Start Tag <xxx>)"];
+    node12 [label="Output(Tag <xxx/>)"];
+    node13 [label="Output(Content for the tag)"];
+    node14 [label="Format Error"];
+   
+    
+    node0-> node1;
+    node1 -> node2 [label = "<" ];
+    node1 -> node8 [label = "other characters" ];
+    node2 -> node14 [label = "blank"];
+    node2 -> node3 [label = "?" ];
+    node2 -> node5 [label = "/"];
+    node2 -> node6 [label = "other characters"];
+    node3 -> node3 [label = "other characters" ];
+    node3 -> node4 [label = "?" ];
+    node4 -> node9 [label = ">" ];
+    node4 -> node14 [label = "other characters" ];
+    node5 -> node14 [label = "blank" ];
+    node5 -> node5 [label = "other characters" ];
+    node5 -> node10 [label = ">" ];
+    node6 -> node7 [label = "  /  " ];
+    node6 -> node11 [label = ">" ];
+    node7 -> node14 [label = "other characters" ];
+    node7 -> node12 [label = ">" ];
+    node8 -> node8 [label = "other characters" ];
+    node8 -> node13 [label = "<" ];
+    node1 -> node1 [label = "blank" ];
+    node9 -> node1;
+    node10 -> node1;
+    node11 -> node1;
+    node12 -> node1;
+    node13 -> node1;
+
+    node15 [label="8"];
+    node16 [label="9"];
+    node17 [label="10"];
+    node18 [label="11"];
+    node19 [label="12"];
+    node20 [label="Output(XML Explanation)"];
+     
+    node2 -> node15 [label = "!" ];
+    node15 -> node14 [label = "other characters" ];
+    node15 -> node16 [label = " - " ];
+    node16 -> node14 [label = "other characters" ];
+    node16 -> node17 [label = " - " ];
+    node17 -> node17 [label = "other characters" ];
+    node17 -> node18 [label = " - " ];
+    node18 -> node14 [label = "other characters" ];
+    node18 -> node19 [label = " - " ];
+    node19 -> node14 [label = "other characters" ];
+    node19 -> node20 [label = ">" ];
+    node20 -> node1;
+
+    node21 [label = "13"];
+    node22 [label = "14"];
+    node23 [label = "15"];
+    node24 [label="Output(Attribute Name for Tag)"];
+    node25 [label="Output(Attribute Value for Tag)"];
+
+    node6 -> node21 [label = "blank" ];
+    node21 -> node21 [label = "other characters" ];
+    node21 -> node14 [label = ">" ];
+    node21 -> node24 [label = "="];
+    node24 -> node22;
+    node22 -> node22 [label = "blank" ];
+    node22 -> node14 [label = "other characters" ];
+    node22 -> node23 [label = "double quotion marks" ];
+    node23 -> node23 [label = "other characters" ];
+    node23 -> node25 [label = "double quotion marks" ];
+    node25 -> node6;
+
+    node26 [label = "16"];
+    node27 [label = "17"];
+    node28 [label = "18"];
+    node29 [label = "19"];
+    node30 [label = "Output(Content for CDATA element)"];
+
+    node15 -> node26 [label = "[CDATA"];
+    node26 -> node14 [label = "other characters" ];
+    node26 -> node27 [label = " [ "];
+    node27 -> node27 [label = "other characters" ];
+    node27 -> node28 [label = " ] "] ;
+    node28 -> node14 [label = "other characters" ];
+    node28 -> node29 [label = " ] "] ;
+    node29 -> node14 [label = "other characters" ];
+    node29 -> node30 [label = " > " ];
+    node30 -> node1;
+
+}  
